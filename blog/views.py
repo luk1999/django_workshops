@@ -1,9 +1,9 @@
-from django.http import HttpResponse
+from django.views.generic import ListView
 
 from blog.models import Post
 
 
-def index(request):
-    query = Post.objects.all()
-    titles = [post.title for post in query]
-    return HttpResponse("<br>".join(titles))
+class PostIndexView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    queryset = Post.objects.order_by("-created_at")
