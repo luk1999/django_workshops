@@ -1,0 +1,12 @@
+<h1>Posts</h1>
+
+{% for post in object_list %}
+<h2>{{ post.title }}</h2>
+<small>
+    Created at: {{ post.created_at }},
+    Updated at: {{ post.updated_at }}
+</small>
+<p>{{ post.content|linebreaksbr|truncatewords_html:15 }}</p>
+{% empty %}
+<p>Could not find any posts.</p>
+{% endfor %}
