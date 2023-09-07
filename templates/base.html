@@ -6,6 +6,17 @@
     <meta name="keywords" content="tutorial django blog">
 </head>
 <body>
+    <p style="float: right">
+    {% if user.is_authenticated %}
+        <form style="float: right" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form>
+        <span style="float: right">Logged in as: {{ user.username }}</span>
+    {% else %}
+        <a href="{% url 'login' %}" title="Login">Login</a>
+    {% endif %}
+    </p>
     {% block body %}
         <p>
             <h1><a href="{% url 'blog:index' %}" title="My blog">My blog</a></h1>
