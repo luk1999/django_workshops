@@ -6,6 +6,14 @@
     <meta name="keywords" content="tutorial django blog">
 </head>
 <body>
+    <p style="float: right">
+    {% if user.is_authenticated %}
+        Logged in as: {{ user.username }}
+        | <a href="{% url 'logout' %}" title="Log out">Log out</a>
+    {% else %}
+        <a href="{% url 'login' %}" title="Login">Login</a>
+    {% endif %}
+    </p>
     {% block body %}
         <p>
             <h1><a href="{% url 'blog:index' %}" title="My blog">My blog</a></h1>
