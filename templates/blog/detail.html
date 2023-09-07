@@ -13,3 +13,17 @@
 <p>{{ object.content|linebreaksbr }}</p>
 
 <a href="{% url 'blog:index' %}" title="List of posts">Return to list of posts</a>
+
+<hr>
+<h2>Comments</h2>
+{% for comment in comments %}
+    <p>
+        <small>
+            Written by: {{ comment.created_by }},
+            Created at: {{ comment.created_at }}
+        </small>
+        <br>{{ comment.comment|linebreaksbr }}
+    </p>    
+{% empty %}
+<p>Could not find any comments.</p>
+{% endfor %}
