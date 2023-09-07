@@ -1,0 +1,15 @@
+<h1>{{ object.title }}</h1>
+
+<p>
+    <small>Written by: {{ object.created_by }}</small>
+</p>
+<p>
+    <small>
+        Created at: {{ object.created_at }},
+        Updated at: {{ object.updated_at }}
+    </small>
+</p>
+
+<p>{{ object.content|linebreaksbr }}</p>
+
+<a href="{% url 'blog:index' %}" title="List of posts">Return to list of posts</a>

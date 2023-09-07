@@ -1,7 +1,9 @@
 <h1>Posts</h1>
 
 {% for post in object_list %}
-<h2>{{ post.title }}</h2>
+<h2>
+    <a href="{% url 'blog:detail' post.slug post.pk %}" title="Show {{ post.title }}">{{ post.title }}</a>
+</h2>
 <small>
     Created at: {{ post.created_at }},
     Updated at: {{ post.updated_at }}
