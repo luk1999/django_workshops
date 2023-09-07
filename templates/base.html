@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}DjBlog{% endblock %}</title>
+    <meta name="description" content="Blog written in Django">
+    <meta name="keywords" content="tutorial django blog">
+</head>
+<body>
+    {% block body %}
+        <p>
+            <h1><a href="{% url 'blog:index' %}" title="My blog">My blog</a></h1>
+            <hr>
+        </p>
+        {% block body.content %}
+        {% endblock body.content %}
+    {% endblock body %}
+</body>
+</html>
