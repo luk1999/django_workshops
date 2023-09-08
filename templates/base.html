@@ -12,6 +12,7 @@
         | <a href="{% url 'logout' %}" title="Log out">Log out</a>
     {% else %}
         <a href="{% url 'login' %}" title="Login">Login</a>
+        | <a href="{% url 'registration:register' %}" title="Register">Register</a>
     {% endif %}
     </p>
     {% block body %}
