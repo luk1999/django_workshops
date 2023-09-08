@@ -14,3 +14,11 @@ class RegisterUserForm(UserCreationForm):
             "password1",
             "password2",
         ]
+
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Email was used by another user")
+
+        return email

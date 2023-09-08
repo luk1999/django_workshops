@@ -23,5 +23,12 @@
         {% block body.content %}
         {% endblock body.content %}
     {% endblock body %}
+    {% block body.js %}
+        {% if messages %}
+        <script>
+            alert('{% for message in messages %}{{ message }}\n{% endfor %}');
+        </script>
+        {% endif %}
+    {% endblock body.js %}
 </body>
 </html>
