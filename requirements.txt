@@ -1,1 +1,2 @@
 django==5.1.4
+crispy-bootstrap5==2024.10

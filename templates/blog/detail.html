@@ -3,38 +3,45 @@
 {% block title %}{{ block.super }}: {{ post.title }}{% endblock title %}
 
 {% block body.content %}
+<div class="row">
     <h1>{{ object.title }}</h1>
+</div>
 
-    <p>
-        <small>Written by: {{ object.created_by }}</small>
-    </p>
-    <p>
-        <small>
-            Created at: {{ object.created_at }},
-            Updated at: {{ object.updated_at }}
-        </small>
-    </p>
-
-    <p>{{ object.content|linebreaksbr }}</p>
-
-    <a href="{% url 'blog:index' %}" title="List of posts">Return to list of posts</a>
-
-    <hr>
-    <h2>Comments</h2>
-
-    {% if user.is_authenticated %}
-    <p><a href="{% url 'blog:comment' object.slug object.pk %}">Add your comment</a></p>
-    {% endif %}
-
-    {% for comment in comments %}
+<div class="row">
+    <div class="col">
+        <p>
+            <small>Written by: {{ object.created_by }}</small>
+        </p>
         <p>
             <small>
-                Written by: {{ comment.created_by }},
-                Created at: {{ comment.created_at }}
+                Created at: {{ object.created_at }},
+                Updated at: {{ object.updated_at }}
             </small>
-            <br>{{ comment.comment|linebreaksbr }}
-        </p>    
-    {% empty %}
-    <p>Could not find any comments.</p>
-    {% endfor %}
+        </p>
+
+        <p>{{ object.content|linebreaksbr }}</p>
+
+        <a class="btn btn-light" href="{% url 'blog:index' %}" title="List of posts">Return to list of posts</a>
+    </div>
+
+    <div class="col-xl-3 col-lg-4 col-md-6">
+        <h2>Comments</h2>
+
+        {% if user.is_authenticated %}
+        <p><a class="btn btn-light" href="{% url 'blog:comment' object.slug object.pk %}">Add your comment</a></p>
+        {% endif %}
+
+        {% for comment in comments %}
+            <p>
+                <small>
+                    Written by: {{ comment.created_by }},
+                    Created at: {{ comment.created_at }}
+                </small>
+                <br>{{ comment.comment|linebreaksbr }}
+            </p>    
+        {% empty %}
+        <div class="alert alert-info">Could not find any comments.</div>        
+        {% endfor %}
+    </div>
+</div>
 {% endblock body.content %}
