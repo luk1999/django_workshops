@@ -21,6 +21,11 @@
 
     <hr>
     <h2>Comments</h2>
+
+    {% if user.is_authenticated %}
+    <p><a href="{% url 'blog:comment' object.slug object.pk %}">Add your comment</a></p>
+    {% endif %}
+
     {% for comment in comments %}
         <p>
             <small>
