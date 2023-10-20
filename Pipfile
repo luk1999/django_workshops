@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "==4.2.5"
+crispy-bootstrap5 = "==0.7"
 
 [dev-packages]
 black = "==23.7.0"
