@@ -12,3 +12,21 @@
 {% empty %}
 <p>Could not find any posts.</p>
 {% endfor %}
+
+{% if object_list|length > 1 %}
+<h1>Stats</h1>
+<p>
+    Newest post:
+    <a href="{% url 'blog:detail' object_list.0.slug object_list.0.pk %}" 
+            title="Show {{ object_list.0.title }}">
+        {{ object_list.0.title }}
+    </a>
+</p>
+<p>
+    Oldest post:
+    <a href="{% url 'blog:detail' object_list.reverse.0.slug object_list.reverse.0.pk %}" 
+            title="Show {{ object_list.reverse.0.title }}">
+        {{ object_list.reverse.0.title }}
+    </a>
+</p>
+{% endif %}
