@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>{% block title %}DjBlog{% endblock %}</title>
-    <meta name="description" content="Blog written in Django">
-    <meta name="keywords" content="tutorial django blog">
+    <meta name="description" content="{% block description %}Blog written in Django{% endblock description %}">
+    <meta name="keywords" content="{% block keywords %}tutorial django blog{% endblock keywords %}">
 </head>
 <body>
     {% block body %}

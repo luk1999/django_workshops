@@ -2,6 +2,8 @@
 
 {% block title %}{{ block.super }}: {{ post.title }}{% endblock title %}
 
+{% block description %}My new post: {{ post.title }}{% endblock description %}
+
 {% block body.content %}
     <h1>{{ object.title }}</h1>
 
