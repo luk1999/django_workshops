@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordChangeView as BasePasswordChangeView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -10,3 +11,8 @@ class RegisterUserView(CreateView):
     form_class = RegisterUserForm
     success_url = reverse_lazy("blog:index")
     template_name = "registration/register.html"
+
+
+class PasswordChangeView(BasePasswordChangeView):
+    success_url = reverse_lazy("blog:index")
+    template_name = "registration/change_password.html"
