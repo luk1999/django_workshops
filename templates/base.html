@@ -9,6 +9,7 @@
     <p style="float: right">
     {% if user.is_authenticated %}
         Logged in as: {{ user.username }}
+        | <a href="{% url 'registration:change_password' %}" title="Change password">Change password</a>
         | <a href="{% url 'logout' %}" title="Log out">Log out</a>
     {% else %}
         <a href="{% url 'login' %}" title="Login">Login</a>
